@@ -65,10 +65,6 @@ chmod +x fetch_model.sh && ./fetch_model.sh
 
 # ENVIRONMENTS
 
-# Install gaussian_splatting_hair environment
-cd $PROJECT_DIR && conda env create -f environment.yml
-conda activate gaussian_splatting_hair
-
 # Install Matte-Anything environment
 conda create -y -n matte_anything \
     pytorch=2.0.0 pytorch-cuda=11.8 torchvision tensorboard timm=0.5.4 opencv=4.5.3 \
@@ -79,7 +75,7 @@ pip install git+https://github.com/facebookresearch/segment-anything.git
 python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
 cd $PROJECT_DIR/ext/Matte-Anything/GroundingDINO && pip install -e .
 pip install supervision==0.22.0 # fixes the GroundingDINO error
-conda deactivate && conda activate gaussian_splatting_hair
+conda deactivate && conda activate Base
 
 # Install PIXIE environment
 conda create -y -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 \
@@ -88,7 +84,7 @@ conda create -y -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torch
 conda activate pixie-env
 pip install pyyaml==5.4.1
 pip install git+https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59 # install this commit to avoid error
-conda deactivate && conda activate gaussian_splatting_hair
+conda deactivate && conda activate Base
 
 # Install OpenPose environment
 conda deactivate
@@ -103,3 +99,7 @@ cd build
 cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
 make -j8
 conda deactivate
+
+# Install gaussian_splatting_hair environment
+cd $PROJECT_DIR && conda env create -f environment.yml
+conda activate gaussian_splatting_hair
