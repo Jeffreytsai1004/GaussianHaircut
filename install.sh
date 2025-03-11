@@ -90,7 +90,7 @@ conda deactivate && conda activate Base
 conda deactivate
 git submodule update --init --recursive --remote
 conda create -y -n openpose cmake=3.20 -c conda-forge # needed to avoid cmake complining error
-conda activate openpose
+conda deactivate && conda activate openpose
 sudo apt install libopencv-dev # installation instructions are from EasyMocap, in case of problems refer to the official OpenPose docs
 sudo apt install protobuf-compiler libgoogle-glog-dev
 sudo apt install libboost-all-dev libhdf5-dev libatlas-base-dev
@@ -98,7 +98,7 @@ mkdir build
 cd build
 cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
 make -j8
-conda deactivate
+conda deactivate && conda activate Base
 
 # Install gaussian_splatting_hair environment
 cd $PROJECT_DIR && conda env create -f environment.yml
