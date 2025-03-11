@@ -81,6 +81,15 @@ cd $PROJECT_DIR/ext/Matte-Anything/GroundingDINO && pip install -e .
 pip install supervision==0.22.0 # fixes the GroundingDINO error
 conda deactivate && conda activate gaussian_splatting_hair
 
+# Install PIXIE environment
+conda create -y -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 \
+    pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib \
+    -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d # this environment works with RTX 4090
+conda activate pixie-env
+pip install pyyaml==5.4.1
+pip install git+https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59 # install this commit to avoid error
+conda deactivate && conda activate gaussian_splatting_hair
+
 # Install OpenPose environment
 conda deactivate
 git submodule update --init --recursive --remote
@@ -94,12 +103,3 @@ cd build
 cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
 make -j8
 conda deactivate
-
-# Install PIXIE environment
-conda create -y -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 \
-    pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib \
-    -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d # this environment works with RTX 4090
-conda activate pixie-env
-pip install pyyaml==5.4.1
-pip install git+https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59 # install this commit to avoid error
-conda deactivate && conda activate gaussian_splatting_hair
