@@ -35,10 +35,6 @@ cd $PROJECT_DIR/ext && git clone --recursive https://github.com/NVIDIAGameWorks/
 cd $PROJECT_DIR/ext/kaolin && git checkout v0.15.0
 cd $PROJECT_DIR/ext && git clone https://github.com/SSL92/hyperIQA
 
-# Install environment
-cd $PROJECT_DIR && conda env create -f environment.yml
-conda activate gaussian_splatting_hair
-
 # Download Neural Haircut files
 cd $PROJECT_DIR/ext/NeuralHaircut
 gdown --folder https://drive.google.com/drive/folders/1TCdJ0CKR3Q6LviovndOkJaKm8S1T9F_8
@@ -51,6 +47,29 @@ gdown 1OOUmnbvpGea0LIGpIWEbOyxfWx6UCiiE
 cd $PROJECT_DIR
 
 # Matte-Anything
+cd $PROJECT_DIR/ext/Matte-Anything && mkdir pretrained
+cd $PROJECT_DIR/ext/Matte-Anything/pretrained
+wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
+gdown 1d97oKuITCeWgai2Tf3iNilt6rMSSYzkW
+
+# OpenPose
+cd $PROJECT_DIR/ext/openpose
+gdown 1Yn03cKKfVOq4qXmgBMQD20UMRRRkd_tV && tar -xvzf models.tar.gz && rm models.tar.gz # downloads openpose checkpoint
+
+# PIXIE
+cd $PROJECT_DIR/ext && git clone https://github.com/yfeng95/PIXIE
+cd $PROJECT_DIR/ext/PIXIE
+chmod +x fetch_model.sh && ./fetch_model.sh
+
+
+# ENVIRONMENTS
+
+# Install gaussian_splatting_hair environment
+cd $PROJECT_DIR && conda env create -f environment.yml
+conda activate gaussian_splatting_hair
+
+# Install Matte-Anything environment
 conda create -y -n matte_anything \
     pytorch=2.0.0 pytorch-cuda=11.8 torchvision tensorboard timm=0.5.4 opencv=4.5.3 \
     mkl=2024.0 setuptools=58.2.0 easydict wget scikit-image gradio=3.46.1 fairscale \
@@ -60,16 +79,9 @@ pip install git+https://github.com/facebookresearch/segment-anything.git
 python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
 cd $PROJECT_DIR/ext/Matte-Anything/GroundingDINO && pip install -e .
 pip install supervision==0.22.0 # fixes the GroundingDINO error
-cd $PROJECT_DIR/ext/Matte-Anything && mkdir pretrained
-cd $PROJECT_DIR/ext/Matte-Anything/pretrained
-wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
-wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
 conda deactivate && conda activate gaussian_splatting_hair
-gdown 1d97oKuITCeWgai2Tf3iNilt6rMSSYzkW
 
-# OpenPose
-cd $PROJECT_DIR/ext/openpose
-gdown 1Yn03cKKfVOq4qXmgBMQD20UMRRRkd_tV && tar -xvzf models.tar.gz && rm models.tar.gz # downloads openpose checkpoint
+# Install OpenPose environment
 conda deactivate
 git submodule update --init --recursive --remote
 conda create -y -n openpose cmake=3.20 -c conda-forge # needed to avoid cmake complining error
@@ -83,13 +95,11 @@ cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
 make -j8
 conda deactivate
 
-# PIXIE
-cd $PROJECT_DIR/ext && git clone https://github.com/yfeng95/PIXIE
-cd $PROJECT_DIR/ext/PIXIE
-chmod +x fetch_model.sh && ./fetch_model.sh
+# Install PIXIE environment
 conda create -y -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 \
     pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib \
     -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d # this environment works with RTX 4090
 conda activate pixie-env
 pip install pyyaml==5.4.1
 pip install git+https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59 # install this commit to avoid error
+conda deactivate && conda activate gaussian_splatting_hair
