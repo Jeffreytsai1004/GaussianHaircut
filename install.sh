@@ -36,8 +36,16 @@ cd $PROJECT_DIR/ext/kaolin && git checkout v0.15.0
 cd $PROJECT_DIR/ext && git clone https://github.com/SSL92/hyperIQA
 
 # Install environment
-cd $PROJECT_DIR && conda env create -f environment.yml
+cd $PROJECT_DIR
+conda create -y -n gaussian_splatting_hair python=3.9 pip setuptools gcc gxx gxx_linux-64 plyfile pytorch torchvision torchaudio pytorch-cuda=11.8 cmake pyhocon icecream einops accelerate jsonmerge easydict iopath tensorboardx scikit-image fvcore toml tqdm gdown colmap -c pytorch -c conda-forge -c defaults -c anaconda -c fvcore -c iopath -c bottler -c nvidia
 conda activate gaussian_splatting_hair
+pip install pysdf clean-fid face-alignment clip torchdiffeq torchsde resize-right
+pip install $PROJECT_DIR/ext/pytorch3d
+pip install $PROJECT_DIR/ext/NeuralHaircut/npbgpp
+pip install $PROJECT_DIR/ext/simple-knn
+pip install $PROJECT_DIR/ext/diff_gaussian_rasterization_hair
+pip install $PROJECT_DIR/ext/kaolin
+
 
 # Download Neural Haircut files
 cd $PROJECT_DIR/ext/NeuralHaircut
@@ -51,10 +59,7 @@ gdown 1OOUmnbvpGea0LIGpIWEbOyxfWx6UCiiE
 cd $PROJECT_DIR
 
 # Matte-Anything
-conda create -y -n matte_anything \
-    pytorch=2.0.0 pytorch-cuda=11.8 torchvision tensorboard timm=0.5.4 opencv=4.5.3 \
-    mkl=2024.0 setuptools=58.2.0 easydict wget scikit-image gradio=3.46.1 fairscale \
-    -c pytorch -c nvidia -c conda-forge # this worked better than the official installation config
+conda create -y -n matte_anything   pytorch=2.0.0 pytorch-cuda=11.8 torchvision tensorboard timm=0.5.4 opencv=4.5.3   mkl=2024.0 setuptools=58.2.0 easydict wget scikit-image gradio=3.46.1 fairscale   -c pytorch -c nvidia -c conda-forge # this worked better than the official installation config
 conda deactivate && conda activate matte_anything
 pip install git+https://github.com/facebookresearch/segment-anything.git
 python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
@@ -87,9 +92,7 @@ conda deactivate
 cd $PROJECT_DIR/ext && git clone https://github.com/yfeng95/PIXIE
 cd $PROJECT_DIR/ext/PIXIE
 chmod +x fetch_model.sh && ./fetch_model.sh
-conda create -y -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 \
-    pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib \
-    -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d # this environment works with RTX 4090
+conda create -y -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0   pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib   -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d # this environment works with RTX 4090
 conda activate pixie-env
 pip install pyyaml==5.4.1
 pip install git+https://github.com/1adrianb/face-alignment.git@54623537fd9618ca7c15688fd85aba706ad92b59 # install this commit to avoid error
