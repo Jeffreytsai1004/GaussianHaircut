@@ -86,7 +86,7 @@ mkdir build
 cd build
 export PATH="/usr/local/cuda-11.8/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH"
-cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
+cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off -DCUDA_ARCH="86"
 make -j8
 conda deactivate
 
