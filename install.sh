@@ -86,7 +86,7 @@ sudo apt install libboost-all-dev libhdf5-dev libatlas-base-dev
 rm -rf build
 mkdir build
 cd build
-cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
+cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off -DPYTHON_EXECUTABLE=/root/miniconda3/envs/openpose/bin/python
 make -j8
 conda deactivate
 
