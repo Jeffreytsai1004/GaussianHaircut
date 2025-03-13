@@ -81,6 +81,7 @@ conda activate openpose
 sudo apt install libopencv-dev # installation instructions are from EasyMocap, in case of problems refer to the official OpenPose docs
 sudo apt install protobuf-compiler libgoogle-glog-dev
 sudo apt install libboost-all-dev libhdf5-dev libatlas-base-dev
+rm -rf build
 mkdir build
 cd build
 cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
