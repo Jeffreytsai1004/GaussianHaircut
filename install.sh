@@ -24,7 +24,7 @@ PROJECT_DIR=$PWD
 
 # Pull all external libraries
 mkdir ext
-cd $PROJECT_DIR/ext && git clone https://github.com/Jeffreytsai1004/openpose --depth 1
+cd $PROJECT_DIR/ext && git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose --depth 1
 cd $PROJECT_DIR/ext/openpose && git submodule update --init --recursive --remote
 cd $PROJECT_DIR/ext && git clone https://github.com/hustvl/Matte-Anything
 cd $PROJECT_DIR/ext/Matte-Anything && git clone https://github.com/IDEA-Research/GroundingDINO.git
