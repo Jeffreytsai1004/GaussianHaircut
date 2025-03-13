@@ -15,7 +15,7 @@ pip install cmake lit
 pip install "pillow<11.0" --force-reinstall
 conda deactivate && conda activate base_01
 # Openpose
-conda create -y -n openpose python=3.9 pip cmake numpy pillow -c conda-forge
+conda create -y -n openpose python=3.9 pip cmake numpy pillow protobuf -c conda-forge
 conda activate openpose
 conda deactivate && conda activate base_01
 # PIXIE
