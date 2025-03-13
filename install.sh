@@ -78,15 +78,12 @@ conda deactivate
 git submodule update --init --recursive --remote
 # conda create -y -n openpose cmake=3.20 -c conda-forge # needed to avoid cmake complining error
 conda activate openpose
-sudo apt remove libopencv-dev protobuf-compiler libgoogle-glog-dev libboost-all-dev libhdf5-dev libatlas-base-dev
-sudo apt autoremove
-sudo apt install libopencv-dev protobuf-compiler libgoogle-glog-dev libboost-all-dev libhdf5-dev libatlas-base-dev
-rm -rf build
+sudo apt install libopencv-dev # installation instructions are from EasyMocap, in case of problems refer to the official OpenPose docs
+sudo apt install protobuf-compiler libgoogle-glog-dev
+sudo apt install libboost-all-dev libhdf5-dev libatlas-base-dev
 mkdir build
 cd build
-export PATH="/usr/local/cuda-11.8/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH"
-cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off -DCUDA_ARCH="86"
+cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
 make -j8
 conda deactivate
 
