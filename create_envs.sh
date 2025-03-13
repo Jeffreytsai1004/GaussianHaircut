@@ -1,4 +1,5 @@
 eval "$(conda shell.bash hook)"
+conda activate
 # Base_01
 conda create -y -n base_01 python==3.9 pip==23.3.1 setuptools==69.5.1 -c pytorch -c conda-forge -c defaults -c anaconda -c iopath -c bottler -c nvidia
 conda activate base_01
