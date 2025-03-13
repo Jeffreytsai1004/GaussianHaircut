@@ -87,8 +87,10 @@ pip install protobuf
 rm -rf build
 mkdir build
 cd build
+export CMAKE_PREFIX_PATH="/root/miniconda3/envs/openpose:$CMAKE_PREFIX_PATH"
+rm CMakeCache.txt
 cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off -DPYTHON_EXECUTABLE=/root/miniconda3/envs/openpose/bin/python
-make -j8
+make -j`nproc`
 conda deactivate
 
 # PIXIE
