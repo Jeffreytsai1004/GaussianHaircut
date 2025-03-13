@@ -37,6 +37,7 @@ cd $PROJECT_DIR/ext && git clone https://github.com/SSL92/hyperIQA
 
 # Install environment
 cd $PROJECT_DIR
+conda create --name gaussian_splatting_hair  python=3.9 pip=23.3.1 setuptools=69.5.1 gcc=10.4.0 gxx=10.4.0 gxx_linux-64=10.4.0 plyfile=0.8.1 pytorch=2.1.1 torchvision=0.16.1 torchaudio=2.1.1 pytorch-cuda=11.8 cmake=3.28.0 pyhocon=0.3.60 icecream=2.1.3 einops=0.6.0 accelerate=0.18.0 jsonmerge=1.9.0 easydict=1.9 iopath=0.1.10 tensorboardx=2.6 scikit-image=0.20.0 fvcore=0.1.5 toml=0.10.2 tqdm=4.66.5 gdown=5.2.0 colmap=3.10  -c pytorch -c conda-forge -c defaults -c anaconda -c fvcore -c iopath -c bottler -c nvidia
 conda activate gaussian_splatting_hair
 pip install pysdf clean-fid face-alignment clip torchdiffeq torchsde resize-right
 pip install $PROJECT_DIR/ext/pytorch3d
