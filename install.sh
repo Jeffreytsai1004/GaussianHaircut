@@ -16,6 +16,9 @@
 # Need to use this to activate conda environments
 eval "$(conda shell.bash hook)"
 
+# switch to base_01
+conda activate base_01
+
 # Save parent dir
 PROJECT_DIR=$PWD
 
@@ -38,7 +41,7 @@ cd $PROJECT_DIR/ext && git clone https://github.com/SSL92/hyperIQA
 # Install environment
 cd $PROJECT_DIR 
 # conda env create -f environment.yml
-conda activate gaussian_splatting_hair
+conda deactivate && conda activate gaussian_splatting_hair
 
 # Download Neural Haircut files
 cd $PROJECT_DIR/ext/NeuralHaircut
