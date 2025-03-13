@@ -15,10 +15,8 @@ pip install cmake lit
 pip install "pillow<11.0" --force-reinstall
 conda deactivate && conda activate base_01
 # Openpose
-conda create -y -n openpose python==3.9 cmake=3.20 -c conda-forge
+conda create -y -n openpose python==3.9 pip==23.3.1 cmake=3.20 numpy pillow -c conda-forge
 conda activate openpose
-conda install pip
-pip install numpy pillow
 conda deactivate && conda activate base_01
 # PIXIE
 conda create -y -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d
