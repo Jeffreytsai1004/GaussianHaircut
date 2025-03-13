@@ -25,7 +25,9 @@ This repository contains an official implementation of Gaussian Haircut, a stran
    ```bash
    git clone git@github.com:eth-ait/GaussianHaircut.git
    cd GaussianHaircut
+   chmod +x ./create_envs.sh
    chmod +x ./install.sh
+   ./create_envs.sh
    ./install.sh
    ```
 
