@@ -80,9 +80,7 @@ git submodule update --init --recursive --remote
 conda activate openpose
 sudo apt remove libopencv-dev protobuf-compiler libgoogle-glog-dev libboost-all-dev libhdf5-dev libatlas-base-dev
 sudo apt autoremove
-sudo apt install libopencv-dev # installation instructions are from EasyMocap, in case of problems refer to the official OpenPose docs
-sudo apt install protobuf-compiler libgoogle-glog-dev
-sudo apt install libboost-all-dev libhdf5-dev libatlas-base-dev
+sudo apt install libopencv-dev protobuf-compiler libgoogle-glog-dev libboost-all-dev libhdf5-dev libatlas-base-dev
 rm -rf build
 mkdir build
 cd build
