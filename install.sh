@@ -89,8 +89,8 @@ mkdir build
 cd build
 export CMAKE_PREFIX_PATH="/root/miniconda3/envs/openpose:$CMAKE_PREFIX_PATH"
 rm CMakeCache.txt
-cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off -DPYTHON_EXECUTABLE=/root/miniconda3/envs/openpose/bin/python
-make -j`nproc`
+cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off -DPYTHON_EXECUTABLE=/root/miniconda3/envs/openpose/bin/python -DPYTHON_LIBRARY=/root/miniconda3/envs/openpose/lib/libpython3.5m.so -DPYTHON_INCLUDE_DIR=/root/miniconda3/envs/openpose/include/python3.5m
+make -j8
 conda deactivate
 
 # PIXIE
