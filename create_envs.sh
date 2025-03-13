@@ -15,7 +15,7 @@ pip install cmake lit
 pip install "pillow<11.0" --force-reinstall
 conda deactivate && conda activate base_01
 # Openpose
-conda create -y -n openpose cmake=3.20 -c conda-forge
+conda create -y -n openpose python==3.9 cmake=3.20 -c conda-forge
 conda activate openpose
 conda install pip
 pip install numpy pillow
