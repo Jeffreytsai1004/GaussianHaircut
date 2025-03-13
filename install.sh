@@ -78,12 +78,12 @@ conda deactivate
 git submodule update --init --recursive --remote
 # conda create -y -n openpose cmake=3.20 -c conda-forge # needed to avoid cmake complining error
 conda activate openpose
-conda install opencv
 sudo apt remove libopencv-dev protobuf-compiler libgoogle-glog-dev libboost-all-dev libhdf5-dev libatlas-base-dev
 sudo apt autoremove
 sudo apt install libopencv-dev # installation instructions are from EasyMocap, in case of problems refer to the official OpenPose docs
 sudo apt install protobuf-compiler libgoogle-glog-dev
 sudo apt install libboost-all-dev libhdf5-dev libatlas-base-dev
+conda install opencv
 rm -rf build
 mkdir build
 cd build
