@@ -86,9 +86,9 @@ sudo apt install libboost-all-dev libhdf5-dev libatlas-base-dev
 rm -rf build
 mkdir build
 cd build
-export CMAKE_PREFIX_PATH="/root/miniconda3/envs/openpose:$CMAKE_PREFIX_PATH"
-rm CMakeCache.txt
-cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off -DPYTHON_EXECUTABLE=/root/miniconda3/envs/openpose/bin/python -DPYTHON_LIBRARY=/root/miniconda3/envs/openpose/lib/libpython3.9m.so -DPYTHON_INCLUDE_DIR=/root/miniconda3/envs/openpose/include/python3.9m
+export PATH="/usr/local/cuda-11.8/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH"
+cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
 make -j8
 conda deactivate
 
