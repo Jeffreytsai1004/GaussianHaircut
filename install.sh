@@ -16,6 +16,8 @@
 # Need to use this to activate conda environments
 # eval "$(conda shell.bash hook)"
 
+conda init
+
 # switch to base_01
 conda activate base_01
 
