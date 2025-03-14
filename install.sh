@@ -88,7 +88,10 @@ sudo apt-get install cmake-qt-gui
 rm -rf build
 mkdir build
 cd build
-export CXXFLAGS="-std=c++14"
+make clean
+export PATH=/usr/local/cuda-11.8/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH
+# export CXXFLAGS="-std=c++14"
 cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
 make -j8
 conda deactivate
