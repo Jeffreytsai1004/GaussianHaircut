@@ -16,7 +16,7 @@ pip install cmake lit
 pip install "pillow<11.0" --force-reinstall
 conda deactivate && conda activate base_01
 # Openpose
-conda create -n proto_test python=3.10 cmake=3.24 protobuf=3.20 -c conda-forge
+conda create -n openpose python=3.10 cmake=3.24 protobuf=3.20 -c conda-forge
 conda activate openpose
 pip install protobuf
 conda deactivate && conda activate base_01
