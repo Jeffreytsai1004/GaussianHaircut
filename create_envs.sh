@@ -18,6 +18,7 @@ conda deactivate && conda activate base_01
 # Openpose
 conda create -y -n openpose pip cmake=3.31.5 numpy pillow protobuf -c conda-forge
 conda activate openpose
+pip install protobuf
 conda deactivate && conda activate base_01
 # PIXIE
 conda create -y -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d
