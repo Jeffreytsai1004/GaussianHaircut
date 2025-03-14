@@ -75,12 +75,10 @@ gdown 1d97oKuITCeWgai2Tf3iNilt6rMSSYzkW
 
 # OpenPose
 cd $PROJECT_DIR/ext/openpose
+conda activate openpose
 gdown 1Yn03cKKfVOq4qXmgBMQD20UMRRRkd_tV && tar -xvzf models.tar.gz && rm models.tar.gz # downloads openpose checkpoint
-conda deactivate
 git submodule update --init --recursive --remote
 # conda create -y -n openpose cmake=3.20 -c conda-forge # needed to avoid cmake complining error
-conda activate openpose
-sudo apt update && sudo apt upgrade -y
 sudo apt install libopencv-dev # installation instructions are from EasyMocap, in case of problems refer to the official OpenPose docs
 sudo apt install protobuf-compiler libgoogle-glog-dev
 sudo apt install libboost-all-dev libhdf5-dev libatlas-base-dev
@@ -91,8 +89,7 @@ cd build
 make clean
 export PATH=/usr/local/cuda-11.8/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH
-# export CXXFLAGS="-std=c++14"
-cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off -DProtobuf_PROTOC_EXECUTABLE=/root/miniconda3/envs/openpose/bin/protoc
+cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
 make -j8
 conda deactivate
 
