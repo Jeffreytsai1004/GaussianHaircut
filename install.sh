@@ -88,9 +88,8 @@ sudo apt-get install cmake-qt-gui
 rm -rf build
 mkdir build
 cd build
-export CXXFLAGS="-std=c++11"
+export CXXFLAGS="-std=c++14"
 cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
-# export CXXFLAGS="-std=c++11"
 make -j8
 conda deactivate
 
