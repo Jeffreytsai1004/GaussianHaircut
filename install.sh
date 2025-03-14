@@ -92,7 +92,7 @@ make clean
 export PATH=/usr/local/cuda-11.8/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH
 # export CXXFLAGS="-std=c++14"
-cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
+cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off -DProtobuf_PROTOC_EXECUTABLE=/root/miniconda3/envs/openpose/bin/protoc
 make -j8
 conda deactivate
 
