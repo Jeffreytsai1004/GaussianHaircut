@@ -21,6 +21,8 @@ conda activate base_01
 
 # Save parent dir
 PROJECT_DIR=$PWD
+export PATH=/usr/local/cuda-11.8/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH
 
 # Pull all external libraries
 mkdir ext
