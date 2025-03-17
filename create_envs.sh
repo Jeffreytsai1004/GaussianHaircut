@@ -16,7 +16,7 @@ pip install cmake lit
 pip install "pillow<11.0" --force-reinstall
 conda deactivate && conda activate base_01
 # Openpose
-conda create -n openpose python=3.8 cmake=3.20 protobuf -c conda-forge
+conda create -n openpose python=3.8 cmake protobuf -c conda-forge
 conda activate openpose
 sudo apt install libopencv-dev protobuf-compiler libgoogle-glog-dev libboost-all-dev libhdf5-dev libatlas-base-dev cmake-qt-gui
 conda deactivate && conda activate base_01
