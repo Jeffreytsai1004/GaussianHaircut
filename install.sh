@@ -79,10 +79,6 @@ conda activate openpose
 gdown 1Yn03cKKfVOq4qXmgBMQD20UMRRRkd_tV && tar -xvzf models.tar.gz && rm models.tar.gz # downloads openpose checkpoint
 git submodule update --init --recursive --remote
 # conda create -y -n openpose cmake=3.20 -c conda-forge # needed to avoid cmake complining error
-sudo apt install libopencv-dev # installation instructions are from EasyMocap, in case of problems refer to the official OpenPose docs
-sudo apt install protobuf-compiler libgoogle-glog-dev
-sudo apt install libboost-all-dev libhdf5-dev libatlas-base-dev
-sudo apt-get install cmake-qt-gui
 rm -rf build
 mkdir build
 cd build
