@@ -18,7 +18,9 @@ conda deactivate && conda activate base_01
 # Openpose
 conda create -n openpose python=3.8 cmake protobuf -c conda-forge
 conda activate openpose
-sudo apt install libopencv-dev protobuf-compiler libgoogle-glog-dev libboost-all-dev libhdf5-dev libatlas-base-dev cmake-qt-gui
+sudo apt install libopencv-dev # installation instructions are from EasyMocap, in case of problems refer to the official OpenPose docs
+sudo apt install protobuf-compiler libgoogle-glog-dev
+sudo apt install libboost-all-dev libhdf5-dev libatlas-base-dev
 conda deactivate && conda activate base_01
 # PIXIE
 conda create -y -n pixie-env python=3.8 pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 fvcore pytorch3d==0.7.5 kornia matplotlib -c pytorch -c nvidia -c fvcore -c conda-forge -c pytorch3d
