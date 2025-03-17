@@ -82,7 +82,6 @@ git submodule update --init --recursive --remote
 rm -rf build
 mkdir build
 cd build
-make clean
 export PATH=/usr/local/cuda-11.8/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH
 cmake .. -DBUILD_PYTHON=true -DUSE_CUDNN=off
