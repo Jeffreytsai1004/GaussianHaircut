@@ -16,7 +16,7 @@ pip install cmake lit
 pip install "pillow<11.0" --force-reinstall
 conda deactivate && conda activate base_01
 # Openpose
-conda create -n openpose python=3.8 cmake protobuf -c conda-forge
+conda create -n openpose python=3.8 cmake protobuf=3.8.0 -c conda-forge
 conda activate openpose
 sudo apt install libopencv-dev # installation instructions are from EasyMocap, in case of problems refer to the official OpenPose docs
 sudo apt install protobuf-compiler libgoogle-glog-dev
